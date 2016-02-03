@@ -3,6 +3,7 @@
 .modgit/
 .modman/
 app/bootstrap.php
+tests/*
 app/code/community/Phoenix/
 app/code/community/Cm/
 app/code/core/
