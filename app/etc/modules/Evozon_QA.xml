@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Evozon_QA>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Evozon_QA>
+    </modules>
+</config>
