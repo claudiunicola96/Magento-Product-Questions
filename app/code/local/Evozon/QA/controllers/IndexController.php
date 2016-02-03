@@ -9,6 +9,12 @@
 class Evozon_QA_IndexController extends Mage_Core_Controller_Front_Action
 {
     /**
+     * Log file name
+     * @var string
+     */
+    const QUESTION_LOG = 'questions.log';
+
+    /**
      * Add a question.
      * Conditions to add a question are: customer logged, question form not empty.
      * @return Mage_Core_Controller_Varien_Action
@@ -28,7 +34,7 @@ class Evozon_QA_IndexController extends Mage_Core_Controller_Front_Action
 
                 return $this->_redirectReferer();
             } catch (Exception $e) {
-                Mage::log('METHOD addQuestionAction ' + $e, null, 'questions.log');
+                Mage::log('METHOD addQuestionAction ' + $e, null, self::QUESTION_LOG);
                 Mage::getSingleton('catalog/session')
                     ->addError('Unable to submit your question. Please, try again later');
 
