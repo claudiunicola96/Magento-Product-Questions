@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <config>
     <modules>
         <Evozon_QA>
@@ -56,4 +57,22 @@
             </updates>
         </layout>
     </frontend>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <evozon_qa before="Mage_Adminhtml">Evozon_QA_Adminhtml</evozon_qa>
+                    </modules>
+                </args>
+                <layout>
+                    <update>
+                        <qa module="Evozon_QA">
+                            <file>qa.xml</file>
+                        </qa>
+                    </update>
+                </layout>
+            </adminhtml>
+        </routers>
+    </admin>
 </config>
