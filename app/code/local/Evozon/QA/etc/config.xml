@@ -35,7 +35,7 @@
         </resources>
         <helpers>
             <evozon_qa>
-                <class>Evozon_QA_Helpers</class>
+                <class>Evozon_QA_Helper</class>
             </evozon_qa>
         </helpers>
     </global>
@@ -62,15 +62,15 @@
             <adminhtml>
                 <args>
                     <modules>
-                        <evozon_qa before="Mage_Adminhtml">Evozon_QA_Adminhtml</evozon_qa>
+                        <evozon_qa after="Mage_Adminhtml">Evozon_QA_Adminhtml</evozon_qa>
                     </modules>
                 </args>
                 <layout>
-                    <update>
+                    <updates>
                         <qa module="Evozon_QA">
                             <file>qa.xml</file>
                         </qa>
-                    </update>
+                    </updates>
                 </layout>
             </adminhtml>
         </routers>

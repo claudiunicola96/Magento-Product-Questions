@@ -3,17 +3,55 @@
     <menu>
         <catalog>
             <children>
-                <questions translate="title">
-                    <sort_order>200</sort_order>
+                <qa translate="title" module="evozon_qa">
                     <title>Questions</title>
+                    <sort_order>181</sort_order>
                     <children>
-                        <evozon_qa translate="title" module="evozon_qa">
-                            <title>Customer questions</title>
-                            <action>adminhtml/qa/</action>
-                        </evozon_qa>
+                        <customer_questions translate="title" module="evozon_qa">
+                            <title>Customer Questions</title>
+                            <sort_order>0</sort_order>
+                            <children>
+                                <pending translate="title" module="evozon_qa">
+                                    <title>Pending Questions</title>
+                                    <action>adminhtml/qa/pending</action>
+                                </pending>
+                                <all translate="title" module="evozon_qa">
+                                    <title>All Questions</title>
+                                    <action>adminhtml/qa/index</action>
+                                </all>
+                            </children>
+                        </customer_questions>
                     </children>
-                </questions>
+                </qa>
             </children>
         </catalog>
     </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <qa translate="title" module="evozon_qa">
+                        <title>Questions</title>
+                        <sort_order>181</sort_order>
+                        <children>
+                            <customer_questions>
+                                <title>Customer Questions</title>
+                                <sort_order>0</sort_order>
+                                <children>
+                                    <pending>
+                                        <title>Pending Questions</title>
+                                        <sort_order>1</sort_order>
+                                    </pending>
+                                    <all>
+                                        <title>All Questions</title>
+                                        <sort_order>2</sort_order>
+                                    </all>
+                                </children>
+                            </customer_questions>
+                        </children>
+                    </qa>
+                </children>
+            </admin>
+        </resources>
+    </acl>
 </config>
