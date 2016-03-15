@@ -17,7 +17,7 @@
                                 </pending>
                                 <all translate="title" module="evozon_qa">
                                     <title>All Questions</title>
-                                    <action>adminhtml/qa/index</action>
+                                    <action>adminhtml/qa_backend/index</action>
                                 </all>
                             </children>
                         </customer_questions>

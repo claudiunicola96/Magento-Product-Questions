@@ -6,11 +6,13 @@
         </Evozon_QA>
     </modules>
     <global>
+
         <blocks>
             <evozon_qa>
                 <class>Evozon_QA_Block</class>
             </evozon_qa>
         </blocks>
+
         <models>
             <evozon_qa>
                 <class>Evozon_QA_Model</class>
@@ -25,6 +27,7 @@
                 </entities>
             </qa_resource>
         </models>
+
         <resources>
             <qa_setup>
                 <setup>
@@ -33,11 +36,13 @@
                 </setup>
             </qa_setup>
         </resources>
+
         <helpers>
             <evozon_qa>
                 <class>Evozon_QA_Helper</class>
             </evozon_qa>
         </helpers>
+
     </global>
     <frontend>
         <routers>
@@ -65,13 +70,6 @@
                         <evozon_qa after="Mage_Adminhtml">Evozon_QA_Adminhtml</evozon_qa>
                     </modules>
                 </args>
-                <layout>
-                    <updates>
-                        <qa module="Evozon_QA">
-                            <file>qa.xml</file>
-                        </qa>
-                    </updates>
-                </layout>
             </adminhtml>
         </routers>
     </admin>

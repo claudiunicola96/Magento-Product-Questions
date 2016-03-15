@@ -10,13 +10,13 @@ class Evozon_QA_Block_Adminhtml_Qa_Edit extends Mage_Adminhtml_Block_Widget_Form
 {
     public function __construct()
     {
-        $this->_blockGroup = 'evozon_qa';
+
         $this->_controller = 'adminhtml_qa';
-
-        parent::_construct();
-
+        $this->_blockGroup = 'evozon_qa';
         $this->_updateButton('save', 'label', $this->__('Save Question'));
         $this->_updateButton('delete', 'label', $this->__('Delete Question'));
+
+        parent::_construct();
     }
 
     public function getHeaderText()

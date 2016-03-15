@@ -12,10 +12,10 @@ class Evozon_QA_Block_Adminhtml_Qa_Grid extends Mage_Adminhtml_Block_Widget_Grid
     public function __construct()
     {
         parent::__construct();
-        $this->setId('qaGrid');
         $this->setDefaultSort('create_at');
-        $this->setDefaultDir('ASC');
-        $this->setSaveParametersInSession(true);
+//        $this->setId('qaGrid');
+//        $this->setDefaultDir('ASC');
+//        $this->setSaveParametersInSession(true);
     }
 
     protected function _prepareCollection()
