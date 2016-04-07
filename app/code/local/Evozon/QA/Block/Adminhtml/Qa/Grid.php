@@ -12,22 +12,23 @@ class Evozon_QA_Block_Adminhtml_Qa_Grid extends Mage_Adminhtml_Block_Widget_Grid
     public function __construct()
     {
         parent::__construct();
-        $this->setDefaultSort('create_at');
-//        $this->setId('qaGrid');
-//        $this->setDefaultDir('ASC');
-//        $this->setSaveParametersInSession(true);
+        $this->setDefaultSort('id');
+        $this->setId('qaGrid');
     }
 
     protected function _prepareCollection()
     {
         $collection = Mage::getModel('evozon_qa/qa')
-            ->getCollection()->addProductData();
+            ->getCollection()->getPreparedCollection();
         $this->setCollection($collection);
-        return parent::__construct();
+        return parent::_prepareCollection();
     }
+
 
     protected function _prepareColumns()
     {
+        $options = ['pending' => 'Pending', 'approved' => 'Approved'];
+
         $this->addColumn('id', [
             'header' => Mage::helper('evozon_qa')->__('ID'),
             'align' => 'right',
@@ -51,34 +52,25 @@ class Evozon_QA_Block_Adminhtml_Qa_Grid extends Mage_Adminhtml_Block_Widget_Grid
         ]);
 
         $this->addColumn('status', [
-            'header' => Mage::helper('evozon_qa')->__('Status'),
+            'header' => $this->__('Status'),
             'align' => 'left',
             'index' => 'status',
+            'type' => 'options',
+            'options' => $options,
         ]);
 
-        $this->addColumn('customer_id', [
-            'header' => Mage::helper('evozon_qa')->__('Customer ID'),
+        $this->addColumn('customer_name', [
+            'header' => $this->__('Customer Name'),
             'align' => 'left',
-            'index' => 'customer_id',
-        ]);
-
-        $this->addColumn('question', [
-            'header' => Mage::helper('evozon_qa')->__('Question'),
-            'align' => 'left',
-            'index' => 'question',
-        ]);
-
-        $this->addColumn('answer', [
-            'header' => Mage::helper('evozon_qa')->__('Answer'),
-            'align' => 'left',
-            'index' => 'answer',
-            'renderer' => 'Evozon_QA_Block_Adminhtml_Qa_Renderer_Qa',
+            'index' => 'customer_name',
+            'filter_index' => 'main_table.value',
         ]);
 
         $this->addColumn('name', [
             'header' => Mage::helper('evozon_qa')->__('Product Name'),
             'align' => 'left',
             'index' => 'name',
+            'filter_index' => 'value',
         ]);
 
         $this->addColumn('sku', [
@@ -86,23 +78,12 @@ class Evozon_QA_Block_Adminhtml_Qa_Grid extends Mage_Adminhtml_Block_Widget_Grid
             'align' => 'left',
             'index' => 'sku',
         ]);
-
-        return parent::_construct();
-    }
-
-    public function getGridUrl()
-    {
-        return $this->getUrl('*/*/qaGrid', ['_current' => true]);
+        return parent::_prepareColumns();
     }
 
     public function getRowUrl($row)
     {
         return $this->getUrl('*/*/edit', ['id' => $row->getId()]);
-    }
-
-    protected function _prepareMassaction()
-    {
-        return $this;
     }
 
 }

@@ -70,12 +70,28 @@ class Evozon_QA_Model_Resource_Qa_Collection extends Mage_Core_Model_Resource_Db
     }
 
     /**
+     * Do a inner join with customer_entity_varchar table to get the customer full name by customer_id
+     * @return $this
+     */
+    protected function addCustomerName()
+    {
+        $first = Mage::getModel('eav/entity_attribute')->loadByCode('1', 'firstname');
+        $last = Mage::getModel('eav/entity_attribute')->loadByCode('1', 'lastname');
+        $this->getSelect()->join(['ce1' => 'customer_entity_varchar'], 'ce1.entity_id=main_table.customer_id', ['firstname' => 'value'])
+            ->where('ce1.attribute_id='.$first->getAttributeId())
+            ->join(['ce2' => 'customer_entity_varchar'], 'ce2.entity_id=main_table.customer_id', ['lastname' => 'value'])
+            ->where('ce2.attribute_id='.$last->getAttributeId())
+            ->columns(new Zend_Db_Expr("CONCAT(`ce1`.`value`, ' ',`ce2`.`value`) AS customer_name"));
+        return $this;
+    }
+
+    /**
      * Do a inner join with catalog_product_entity_varchar table to get the product_name
      * @return $this
      */
-    public function addProductData()
+    protected function addProductData()
     {
-        $this->addSku();
+
 
         $productAttributes = ['name'];
         foreach ($productAttributes as $attributeCode) {
@@ -90,6 +106,13 @@ class Evozon_QA_Model_Resource_Qa_Collection extends Mage_Core_Model_Resource_Db
             );
         }
 
+        return $this;
+    }
+
+    public function getPreparedCollection(){
+        $this->addSku();
+        $this->addCustomerName();
+        $this->addProductData();
         return $this;
     }
 }

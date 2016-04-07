@@ -13,11 +13,11 @@
                             <children>
                                 <pending translate="title" module="evozon_qa">
                                     <title>Pending Questions</title>
-                                    <action>adminhtml/qa/pending</action>
+                                    <action>adminhtml/qa_qa/pending</action>
                                 </pending>
                                 <all translate="title" module="evozon_qa">
                                     <title>All Questions</title>
-                                    <action>adminhtml/qa_backend/index</action>
+                                    <action>adminhtml/qa_qa/index</action>
                                 </all>
                             </children>
                         </customer_questions>

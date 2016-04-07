@@ -15,8 +15,8 @@ class Evozon_QA_Block_Adminhtml_Qa extends Mage_Adminhtml_Block_Widget_Grid_Cont
     {
         $this->_blockGroup = 'evozon_qa';
         $this->_controller = 'adminhtml_qa';
-        $this->_headerText = $this->__('Questions Manager');
+        $this->_headerText = $this->__('All Questions');
         $this->_addButtonLabel = $this->__('Add New Question');
-        parent::_construct();
+        parent::__construct();
     }
 }

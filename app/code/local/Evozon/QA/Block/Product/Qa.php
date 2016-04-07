@@ -45,7 +45,7 @@ class Evozon_QA_Block_Product_Qa extends Mage_Core_Block_Template
         $collection = Mage::getModel('evozon_qa/qa')->getCollection()
             ->getProductQA(Mage::registry('current_product')->getId());
 
-        return $collection->getData();
+            return $collection->getData();
     }
 
 }
